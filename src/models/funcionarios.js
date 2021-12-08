@@ -1,18 +1,18 @@
-const funcionariosDAO = require("../DAO/funcionariosDAO");
+const FuncionariosDAO = require("../DAO/FuncionariosDAO");
 const dataBase = require("../infra/conexao");
 
 
-class funcionarios{
+class Funcionarios{
     static async lista(req, res){
         try{
-            res.status(200).json(await funcionariosDAO.selectfuncionarios(dataBase))
+            res.status(200).json(await FuncionariosDAO.selectFuncionarios(dataBase))
         } catch (e){
             res.status(404).json(e.menssage)
         }
     }
     static async buscaID(id, res){
         try {
-            let idTaAqui = await funcionariosDAO.selectID(id, dataBase)
+            let idTaAqui = await FuncionariosDAO.selectID(id, dataBase)
             res.status(200).json(idTaAqui)
         }catch(e){
             res.status(404).json(e.menssage)
@@ -20,7 +20,7 @@ class funcionarios{
     }
     static async adiciona(body, res) {
         try {
-            let deuBom = await funcionariosDAO.addfuncionarios(body, dataBase)
+            let deuBom = await FuncionariosDAO.addFuncionarios(body, dataBase)
             res.status(201).json(deuBom)
         }catch(e){
             res.status(404).json(e.menssage)
@@ -28,7 +28,7 @@ class funcionarios{
     }
     static async atualiza(id, body, res){
         try {
-            let mudou = await funcionariosDAO.updatefuncionarios(id, body, dataBase)
+            let mudou = await FuncionariosDAO.updateFuncionarios(id, body, dataBase)
             res.status(201).json(mudou)
         }catch(e){
             res.status(404).json(e.menssage)
@@ -36,7 +36,7 @@ class funcionarios{
     }
     static async deleta(id, res){
         try {
-            let deletei = await funcionariosDAO.deletefuncionarios(id, dataBase)
+            let deletei = await FuncionariosDAO.deleteFuncionarios(id, dataBase)
             res.status(200).json(deletei)
         }catch(e){
             res.status(404).json(e.menssage)
@@ -44,4 +44,4 @@ class funcionarios{
     }
 }
 
-module.exports = funcionarios
+module.exports = Funcionarios
