@@ -14,7 +14,7 @@ Para o desenvolvimento foi utilizado JavaScript com NodeJS como linguagem da apl
     "sqlite3": "^5.0.2"
   }
 ```
-As dependencias podem ser encontrada no arquvo <a href ='https://github.com/Maicon-MK/projeto4/blob/main/package.json'></a> do qual o trecho acima foi extraído. 
+As dependencias podem ser encontrada no arquivo <a href ='https://github.com/Maicon-MK/projeto4/blob/main/package.json'></a> do qual o trecho acima foi extraído. 
 
 
 ## Dependencias de desenvolvimento:
