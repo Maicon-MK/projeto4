@@ -1,25 +1,25 @@
-const funcionarios = require("../models/funcionarios");
+const Funcionarios = require("../models/Funcionarios");
 
 module.exports = (app) => {
     app.get("/", (req,res) => {
         res.send("<h1>API funcionando</h1>")
     })
     app.get("/funcionarios", (req,res) =>{
-        funcionarios.lista(req, res)
+        Funcionarios.lista(req, res)
     })
     app.get("/funcionarios/:id", (req,res) => {
         let id = parseInt(req.params.id)
-        funcionarios.buscaID(id, res)
+        Funcionarios.buscaID(id, res)
     })
     app.post("/funcionarios", (req, res) =>{
-        funcionarios.adiciona(req.body, res)
+        Funcionarios.adiciona(req.body, res)
     })
     app.patch("/funcionarios/:id", (req, res) => {
         let id = parseInt(req.params.id)
-        funcionarios.atualiza(id, req.body, res)
+        Funcionarios.atualiza(id, req.body, res)
     })
     app.delete("/funcionarios/:id", (req,res) => {
         let id = parseInt(req.params.id)
-        funcionarios.deleta(id, res)
+        Funcionarios.deleta(id, res)
     })
 }

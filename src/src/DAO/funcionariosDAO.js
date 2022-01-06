@@ -1,16 +1,16 @@
 const Dias = new Date()
 const criado = Dias.getDate() + "/" + (Dias.getMonth() + 1) + "/" + Dias.getFullYear()
 
-class FuncionariosDAO {
+class funcionarioDAO {
 
-  static selectFuncionarios(FuncionariosDb) {
+  static selectfuncionarios(funcionarioDb) {
     return new Promise((resolve, reject) => {
-      FuncionariosDb.all('SELECT * FROM Funcionarios', (err, rows) => {
+      funcionarioDb.all('SELECT * FROM funcionarios', (err, rows) => {
         if (err) {
           reject(({ "mensagem": err.message, "error": true }))
         } else {
           resolve({
-            "Funcionarios": rows,
+            "funcionarios": rows,
             "error": false
           })
         }
@@ -19,9 +19,9 @@ class FuncionariosDAO {
     )
   }
 
-  static selectID(id, FuncionariosDb) {
+  static selectID(id, funcionarioDb) {
     return new Promise((resolve, reject) => {
-      FuncionariosDb.get(`SELECT * FROM Funcionarios WHERE ID = ?`, [id], (err, row) => {
+      funcionarioDb.get(`SELECT * FROM funcionarios WHERE ID = ?`, [id], (err, row) => {
         if (err) {
           reject({ "mensagem": err.message, "error": true })
         } else {
@@ -34,9 +34,9 @@ class FuncionariosDAO {
     })
   }
 
-  static addFuncionarios(body, FuncionariosDb) {
+  static addfuncionario(body, funcionarioDb) {
     return new Promise((resolve, reject) => {
-      FuncionariosDb.run( `INSERT INTO Funcionarios
+      funcionarioDb.run( `INSERT INTO funcionarios 
       (MATRICULA, CARGO, SALARIO, NOME, ADMISSAO)
       VALUES
       (?,?,?,?,?)`, [body.MATRICULA, body.CARGO, body.SALARIO, body.NOME, criado], (err) => {
@@ -52,9 +52,9 @@ class FuncionariosDAO {
     })
   }
 
-  static deleteFuncionarios(id, FuncionariosDb) {
+  static deletefuncionario(id, funcionarioDb) {
     return new Promise((resolve, reject) => {
-      FuncionariosDb.all(`DELETE FROM Funcionarios WHERE id = ?`, id, (err) => {
+      funcionarioDb.all(`DELETE FROM funcionarios WHERE id = ?`, id, (err) => {
         if (err) {
           reject(({ "mensagem": err.message, "error": true }))
         } else {
@@ -67,9 +67,9 @@ class FuncionariosDAO {
     })
   }
 
-  static updateFuncionarios(id, body, FuncionariosDb) {
+  static updatefuncionario(id, body, funcionarioDb) {
     return new Promise((resolve, reject) => {
-      FuncionariosDb.run(`UPDATE Funcionarios SET (MATRICULA, CARGO, SALARIO, NOME, ADMISSAO) = (?,?,?,?,?) WHERE id = ?`, [body.MATRICULA, body.CARGO, body.SALARIO, body.NOME, criado], (err) => {
+      funcionarioDb.run(`UPDATE funcionarios SET (MATRICULA, CARGO, SALARIO, NOME, ADMISSAO) = (?,?,?,?,?) WHERE id = ?`, [body.MATRICULA, body.CARGO, body.SALARIO, body.NOME, criado], (err) => {
         if (err) {
           reject(({ "mensagem": err.message, "error": true }))
         } else {
@@ -83,5 +83,5 @@ class FuncionariosDAO {
   }
 }
 
-module.exports = FuncionariosDAO;
+module.exports = funcionarioDAO
 

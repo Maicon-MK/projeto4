@@ -16,8 +16,8 @@ const TABELA_funcionarios = `
     )
 `;
 
-const ADD_DADOS_funcionarios = `INSERT INTO funcionarios 
-        (ID, MATRICULA, CARGO, SALARIO, NOME, ADMISSAO)
+const ADD_DADOS_funcionarios = `INSERT INTO "funcionarios" 
+        ("ID", "MATRICULA", CARGO, "SALARIO", "NOME", "ADMISSAO")
         VALUES
         (1, '000000', 'Publicitario', '00.00', 'Joaquim', ${criado})`
 
