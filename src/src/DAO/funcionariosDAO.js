@@ -69,7 +69,7 @@ class funcionarioDAO {
 
   static updatefuncionario(id, body, funcionarioDb) {
     return new Promise((resolve, reject) => {
-      funcionarioDb.run(`UPDATE funcionarios SET (MATRICULA, CARGO, SALARIO, NOME, ADMISSAO) = (?,?,?,?,?) WHERE id = ?`, [body.MATRICULA, body.CARGO, body.SALARIO, body.NOME, criado], (err) => {
+      funcionarioDb.run(`UPDATE funcionarios SET (MATRICULA, CARGO, SALARIO, NOME, ADMISSAO) = (?,?,?,?,?) WHERE id = ?`, [body.MATRICULA, body.CARGO, body.SALARIO, body.NOME, criado, id], (err) => {
         if (err) {
           reject(({ "mensagem": err.message, "error": true }))
         } else {
