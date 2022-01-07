@@ -14,7 +14,7 @@ module.exports = (app) => {
     app.post("/funcionarios", (req, res) =>{
         Funcionarios.adiciona(req.body, res)
     })
-    app.patch("/funcionarios/:id", (req, res) => {
+    app.put("/funcionarios/:id", (req, res) => {
         let id = parseInt(req.params.id)
         Funcionarios.atualiza(id, req.body, res)
     })
